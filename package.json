@@ -1,0 +1,21 @@
+{
+  "name": "stay-in-the-circle",
+  "version": "1.0.0",
+  "description": "A game built in ReactJs. Players must move the mouse pointer within the yellow circle and stay there until the counter reaches 100.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "Jonathan D Kaonga",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

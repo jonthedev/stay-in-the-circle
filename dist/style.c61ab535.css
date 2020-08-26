@@ -1,0 +1,53 @@
+body {
+  background: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.container {
+  text-align: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+.track {
+  stroke: #ccc;
+}
+
+.marker {
+  motion-path: path("M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0");
+  offset-path: path("M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0");
+}
+
+.marker-rotate {
+  animation: move 2.5s linear infinite;
+}
+
+svg {
+  margin-bottom: 5em;
+}
+
+.counter {
+  font-size: 4em;
+}
+
+@keyframes move {
+  100% {
+    motion-offset: 100%;
+    offset-distance: 100%;
+  }
+}
+
+
+/*# sourceMappingURL=/style.c61ab535.css.map */
