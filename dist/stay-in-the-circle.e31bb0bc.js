@@ -28357,7 +28357,80 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/App.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/Circle.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Circle = function Circle(props) {
+  return /*#__PURE__*/_react.default.createElement("svg", {
+    viewBox: "0,0 10,10",
+    width: "400px",
+    height: "400px"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    className: "track",
+    fill: "none",
+    strokeWidth: "0.25",
+    d: "M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
+  }), /*#__PURE__*/_react.default.createElement("circle", {
+    className: "marker",
+    r: "1",
+    fill: "orange"
+  }));
+};
+
+var _default = Circle;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/components/Controller.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Controller = function Controller() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "control"
+  }, /*#__PURE__*/_react.default.createElement("button", null, "Start Game"));
+};
+
+var _default = Controller;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/components/ButtonStart.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ButtonStart = function ButtonStart(props) {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return props.setGameStatus();
+    }
+  }, props.gameStatus ? "Stop" : "Start");
+};
+
+var _default = ButtonStart;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28368,6 +28441,14 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 require("./style.css");
+
+var _Circle = _interopRequireDefault(require("./components/Circle"));
+
+var _Controller = _interopRequireDefault(require("./components/Controller"));
+
+var _ButtonStart = _interopRequireDefault(require("./components/ButtonStart"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -28395,6 +28476,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -28406,7 +28489,19 @@ var App = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, App);
 
     _this = _super.call(this);
-    _this.state = {};
+
+    _defineProperty(_assertThisInitialized(_this), "setGameStatus", function () {
+      _this.setState(function (prevState) {
+        return {
+          gameStatus: !prevState.gameStatus
+        };
+      });
+    });
+
+    _this.state = {
+      gameStatus: false,
+      count: 0
+    };
     return _this;
   }
 
@@ -28415,22 +28510,14 @@ var App = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the yellow circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement("svg", {
-        viewBox: "0,0 10,10",
-        width: "400px",
-        height: "400px"
-      }, /*#__PURE__*/_react.default.createElement("path", {
-        className: "track",
-        fill: "none",
-        strokeWidth: "0.25",
-        d: "M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
-      }), /*#__PURE__*/_react.default.createElement("circle", {
-        className: "marker",
-        r: "1",
-        fill: "orange"
-      })), /*#__PURE__*/_react.default.createElement("span", {
-        className: "counter"
-      }, "0"));
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the yellow circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, null), /*#__PURE__*/_react.default.createElement("div", {
+        className: "control"
+      }, /*#__PURE__*/_react.default.createElement(_ButtonStart.default, {
+        setGameStatus: this.setGameStatus,
+        gameStatus: this.state.gameStatus
+      }), /*#__PURE__*/_react.default.createElement("span", {
+        className: "count"
+      }, this.state.count)));
     }
   }]);
 
@@ -28439,7 +28526,7 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./style.css":"src/style.css"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./style.css":"src/style.css","./components/Circle":"src/components/Circle.js","./components/Controller":"src/components/Controller.js","./components/ButtonStart":"src/components/ButtonStart.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28479,7 +28566,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49411" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49674" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

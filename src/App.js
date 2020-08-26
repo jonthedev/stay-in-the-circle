@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 import "./style.css";
+import Circle from "./components/Circle";
+import Controller from "./components/Controller";
+import ButtonStart from "./components/ButtonStart";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      gameStatus: false,
+      count: 0,
+    };
   }
+
+  setGameStatus = () => {
+    this.setState(prevState => ({
+      gameStatus: !prevState.gameStatus,
+    }));
+  };
+
   render() {
     return (
       <div className="container">
@@ -14,17 +27,14 @@ class App extends Component {
           * Welcome, the rules are simple, you must move your mouse pointer
           within the yellow circle and stay there until the counter reaches 100.
         </p>
-        <svg viewBox="0,0 10,10" width="400px" height="400px">
-          <path
-            className="track"
-            fill="none"
-            strokeWidth="0.25"
-            d="M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
+        <Circle />
+        <div className="control">
+          <ButtonStart
+            setGameStatus={this.setGameStatus}
+            gameStatus={this.state.gameStatus}
           />
-
-          <circle className="marker" r="1" fill="orange"></circle>
-        </svg>
-        <span className="counter">0</span>
+          <span className="count">{this.state.count}</span>
+        </div>
       </div>
     );
   }

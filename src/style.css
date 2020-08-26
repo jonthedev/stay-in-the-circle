@@ -20,6 +20,7 @@ body {
 p {
   font-size: 1.5em;
 }
+/*** CIRCLE & ANIMATION */
 
 .track {
   stroke: #ccc;
@@ -38,13 +39,30 @@ svg {
   margin-bottom: 5em;
 }
 
-.counter {
-  font-size: 4em;
-}
-
 @keyframes move {
   100% {
     motion-offset: 100%;
     offset-distance: 100%;
   }
+}
+
+/*** CONTROLS ***/
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.control button {
+  height: 2em;
+  width: 5em;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.count {
+  font-size: 4em;
 }
