@@ -28558,11 +28558,13 @@ var App = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "addCount", function () {
-      _this.setState(function (prevState) {
-        return {
-          count: prevState.count + 1
-        };
-      });
+      if (_this.state.count <= 99) {
+        _this.setState(function (prevState) {
+          return {
+            count: prevState.count + 1
+          };
+        });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "resetCounter", function () {
@@ -28649,7 +28651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57332" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63580" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

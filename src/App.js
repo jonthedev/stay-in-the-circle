@@ -25,9 +25,11 @@ class App extends Component {
 
   //INCREASE COUNTER
   addCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count + 1,
-    }));
+    if (this.state.count <= 99) {
+      this.setState(prevState => ({
+        count: prevState.count + 1,
+      }));
+    }
   };
 
   //RESET COUNTER
