@@ -1,5 +1,5 @@
 body {
-  background: #333;
+  background: rgb(79, 91, 200);
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -64,7 +64,13 @@ svg {
 }
 
 .count {
+  margin-left: 0.5em;
   font-size: 4em;
+}
+
+/*** MESSAGE */
+.message {
+  font-size: 10rem;
 }
 
 

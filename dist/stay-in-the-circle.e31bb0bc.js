@@ -28572,7 +28572,8 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       gameStatus: false,
-      count: 0
+      count: 0,
+      message: ""
     };
     return _this;
   } //START / STOP GAME
@@ -28593,7 +28594,12 @@ var App = /*#__PURE__*/function (_Component) {
         gameStatus: this.state.gameStatus
       }), /*#__PURE__*/_react.default.createElement("span", {
         className: "count"
-      }, this.state.count)));
+      }, this.state.count)), /*#__PURE__*/_react.default.createElement("p", {
+        className: "message",
+        style: {
+          fontSize: "2em"
+        }
+      }, this.state.count >= 20 ? "Congratulations you won!" : "I pity the fool who doesn't stay in the circle!"));
     }
   }]);
 
@@ -28642,7 +28648,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55896" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56064" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

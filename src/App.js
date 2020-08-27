@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
+      message: "",
     };
   }
 
@@ -53,6 +54,11 @@ class App extends Component {
           />
           <span className="count">{this.state.count}</span>
         </div>
+        <p className="message" style={{ fontSize: "2em" }}>
+          {this.state.count >= 20
+            ? "Congratulations you won!"
+            : "I pity the fool who doesn't stay in the circle!"}
+        </p>
       </div>
     );
   }
