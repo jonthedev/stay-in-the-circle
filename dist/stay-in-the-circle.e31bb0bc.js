@@ -28478,6 +28478,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ButtonStart = function ButtonStart(props) {
   return /*#__PURE__*/_react.default.createElement("button", {
+    className: "".concat(!props.gameStatus ? "start" : "stop"),
     onClick: function onClick() {
       return props.setGameStatus();
     }
@@ -28572,8 +28573,7 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       gameStatus: false,
-      count: 0,
-      message: ""
+      count: 0
     };
     return _this;
   } //START / STOP GAME
@@ -28590,6 +28590,7 @@ var App = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/_react.default.createElement("div", {
         className: "control"
       }, /*#__PURE__*/_react.default.createElement(_ButtonStart.default, {
+        style: {},
         setGameStatus: this.setGameStatus,
         gameStatus: this.state.gameStatus
       }), /*#__PURE__*/_react.default.createElement("span", {
@@ -28599,7 +28600,7 @@ var App = /*#__PURE__*/function (_Component) {
         style: {
           fontSize: "2em"
         }
-      }, this.state.count >= 20 ? "Congratulations you won!" : "I pity the fool who doesn't stay in the circle!"));
+      }, this.state.count >= 100 ? "Congratulations you won!" : "I pity the fool who doesn't stay in the circle!"));
     }
   }]);
 
@@ -28648,7 +28649,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56064" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

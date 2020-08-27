@@ -9,7 +9,6 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
-      message: "",
     };
   }
 
@@ -49,13 +48,14 @@ class App extends Component {
         <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
         <div className="control">
           <ButtonStart
+            style={{}}
             setGameStatus={this.setGameStatus}
             gameStatus={this.state.gameStatus}
           />
           <span className="count">{this.state.count}</span>
         </div>
         <p className="message" style={{ fontSize: "2em" }}>
-          {this.state.count >= 20
+          {this.state.count >= 100
             ? "Congratulations you won!"
             : "I pity the fool who doesn't stay in the circle!"}
         </p>
