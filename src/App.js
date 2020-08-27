@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./style.css";
 import Circle from "./components/Circle";
 import ButtonStart from "./components/ButtonStart";
+import Message from "./components/Message";
+import MrT from "./components/MrT";
 
 class App extends Component {
   constructor() {
@@ -9,6 +11,9 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
+      title: "Stay In The Circle",
+      welcomeMessage:
+        "* Welcome, the rules are simple, MR-T wants you to keep your mouse pointer within the orange circle. You win when the counter reaches 50. *",
     };
   }
 
@@ -25,7 +30,7 @@ class App extends Component {
 
   //INCREASE COUNTER
   addCount = () => {
-    if (this.state.count <= 99) {
+    if (this.state.count <= 49) {
       this.setState(prevState => ({
         count: prevState.count + 1,
       }));
@@ -42,25 +47,26 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Stay in the circle</h1>
-        <p>
-          * Welcome, the rules are simple, you must move your mouse pointer
-          within the orange circle and stay there until the counter reaches 100.
-        </p>
-        <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
+        <h1>{this.state.title}</h1>
+        <p>{this.state.welcomeMessage}</p>
+        <div className="container">
+          <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
+          <MrT />
+        </div>
         <div className="control">
           <ButtonStart
-            style={{}}
             setGameStatus={this.setGameStatus}
             gameStatus={this.state.gameStatus}
           />
           <span className="count">{this.state.count}</span>
         </div>
-        <p className="message" style={{ fontSize: "2em" }}>
-          {this.state.count >= 100
-            ? "Congratulations you won!"
-            : "I pity the fool who doesn't stay in the circle!"}
-        </p>
+        <div>
+          {this.state.count <= 49 ? (
+            <h1>"I pity the fool who doesn't stay in the circle!"</h1>
+          ) : (
+            <Message />
+          )}
+        </div>
       </div>
     );
   }

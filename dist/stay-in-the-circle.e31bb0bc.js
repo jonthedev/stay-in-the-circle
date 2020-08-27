@@ -28487,7 +28487,57 @@ var ButtonStart = function ButtonStart(props) {
 
 var _default = ButtonStart;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/components/Message.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Message() {
+  return /*#__PURE__*/_react.default.createElement("p", {
+    style: {
+      fontSize: "2em"
+    }
+  }, "Congratulations you won!");
+}
+
+var _default = Message;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"public/MrT.jpg":[function(require,module,exports) {
+module.exports = "/MrT.5e389467.jpg";
+},{}],"src/components/MrT.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _MrT = _interopRequireDefault(require("../../public/MrT.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MrT = function MrT() {
+  return /*#__PURE__*/_react.default.createElement("img", {
+    className: "mr-t",
+    width: "140",
+    height: "140",
+    src: _MrT.default,
+    alt: "Mr T pointing"
+  });
+};
+
+var _default = MrT;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../../public/MrT.jpg":"public/MrT.jpg"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28502,6 +28552,10 @@ require("./style.css");
 var _Circle = _interopRequireDefault(require("./components/Circle"));
 
 var _ButtonStart = _interopRequireDefault(require("./components/ButtonStart"));
+
+var _Message = _interopRequireDefault(require("./components/Message"));
+
+var _MrT = _interopRequireDefault(require("./components/MrT"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28558,7 +28612,7 @@ var App = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "addCount", function () {
-      if (_this.state.count <= 99) {
+      if (_this.state.count <= 49) {
         _this.setState(function (prevState) {
           return {
             count: prevState.count + 1
@@ -28575,7 +28629,9 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       gameStatus: false,
-      count: 0
+      count: 0,
+      title: "Stay In The Circle",
+      welcomeMessage: "* Welcome, the rules are simple, MR-T wants you to keep your mouse pointer within the orange circle. You win when the counter reaches 50. *"
     };
     return _this;
   } //START / STOP GAME
@@ -28586,23 +28642,19 @@ var App = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the orange circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, this.state.title), /*#__PURE__*/_react.default.createElement("p", null, this.state.welcomeMessage), /*#__PURE__*/_react.default.createElement("div", {
+        className: "container"
+      }, /*#__PURE__*/_react.default.createElement(_Circle.default, {
         addCount: this.addCount,
         gameStatus: this.state.gameStatus
-      }), /*#__PURE__*/_react.default.createElement("div", {
+      }), /*#__PURE__*/_react.default.createElement(_MrT.default, null)), /*#__PURE__*/_react.default.createElement("div", {
         className: "control"
       }, /*#__PURE__*/_react.default.createElement(_ButtonStart.default, {
-        style: {},
         setGameStatus: this.setGameStatus,
         gameStatus: this.state.gameStatus
       }), /*#__PURE__*/_react.default.createElement("span", {
         className: "count"
-      }, this.state.count)), /*#__PURE__*/_react.default.createElement("p", {
-        className: "message",
-        style: {
-          fontSize: "2em"
-        }
-      }, this.state.count >= 100 ? "Congratulations you won!" : "I pity the fool who doesn't stay in the circle!"));
+      }, this.state.count)), /*#__PURE__*/_react.default.createElement("div", null, this.state.count <= 49 ? /*#__PURE__*/_react.default.createElement("h1", null, "\"I pity the fool who doesn't stay in the circle!\"") : /*#__PURE__*/_react.default.createElement(_Message.default, null)));
     }
   }]);
 
@@ -28611,7 +28663,7 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./style.css":"src/style.css","./components/Circle":"src/components/Circle.js","./components/ButtonStart":"src/components/ButtonStart.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./style.css":"src/style.css","./components/Circle":"src/components/Circle.js","./components/ButtonStart":"src/components/ButtonStart.js","./components/Message":"src/components/Message.js","./components/MrT":"src/components/MrT.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28651,7 +28703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51300" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52982" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
