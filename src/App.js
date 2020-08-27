@@ -10,12 +10,20 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
+      animateCircle: {
+        animate: false,
+        class: "marker",
+      },
     };
   }
 
+  //START / STOP GAME
   setGameStatus = () => {
     this.setState(prevState => ({
       gameStatus: !prevState.gameStatus,
+      animateCircle: {
+        class: prevState.gameStatus ? "marker" : "marker marker-rotate",
+      },
     }));
   };
 
@@ -27,7 +35,7 @@ class App extends Component {
           * Welcome, the rules are simple, you must move your mouse pointer
           within the yellow circle and stay there until the counter reaches 100.
         </p>
-        <Circle />
+        <Circle animate={this.state.animateCircle} />
         <div className="control">
           <ButtonStart
             setGameStatus={this.setGameStatus}

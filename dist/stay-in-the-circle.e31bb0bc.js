@@ -28369,7 +28369,8 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Circle = function Circle(props) {
+var Circle = function Circle(_ref) {
+  var animate = _ref.animate;
   return /*#__PURE__*/_react.default.createElement("svg", {
     viewBox: "0,0 10,10",
     width: "400px",
@@ -28380,7 +28381,7 @@ var Circle = function Circle(props) {
     strokeWidth: "0.25",
     d: "M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
   }), /*#__PURE__*/_react.default.createElement("circle", {
-    className: "marker",
+    className: animate.class,
     r: "1",
     fill: "orange"
   }));
@@ -28425,7 +28426,7 @@ var ButtonStart = function ButtonStart(props) {
     onClick: function onClick() {
       return props.setGameStatus();
     }
-  }, props.gameStatus ? "Stop" : "Start");
+  }, props.gameStatus ? "Reset" : "Start");
 };
 
 var _default = ButtonStart;
@@ -28493,24 +28494,34 @@ var App = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "setGameStatus", function () {
       _this.setState(function (prevState) {
         return {
-          gameStatus: !prevState.gameStatus
+          gameStatus: !prevState.gameStatus,
+          animateCircle: {
+            class: prevState.gameStatus ? "marker" : "marker marker-rotate"
+          }
         };
       });
     });
 
     _this.state = {
       gameStatus: false,
-      count: 0
+      count: 0,
+      animateCircle: {
+        animate: false,
+        class: "marker"
+      }
     };
     return _this;
-  }
+  } //START / STOP GAME
+
 
   _createClass(App, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the yellow circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, null), /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the yellow circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, {
+        animate: this.state.animateCircle
+      }), /*#__PURE__*/_react.default.createElement("div", {
         className: "control"
       }, /*#__PURE__*/_react.default.createElement(_ButtonStart.default, {
         setGameStatus: this.setGameStatus,
@@ -28566,7 +28577,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49674" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62577" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
