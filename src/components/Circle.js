@@ -29,7 +29,7 @@ class Circle extends React.Component {
   render() {
     const gameStatus = this.props.gameStatus;
     return (
-      <svg viewBox="0,0 10,10" width="400px" height="400px">
+      <svg viewBox="0,0 10,10" width="250px" height="250px">
         <path
           className="track"
           fill="none"

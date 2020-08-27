@@ -28438,8 +28438,8 @@ var Circle = /*#__PURE__*/function (_React$Component) {
       var gameStatus = this.props.gameStatus;
       return /*#__PURE__*/_react.default.createElement("svg", {
         viewBox: "0,0 10,10",
-        width: "400px",
-        height: "400px"
+        width: "250px",
+        height: "250px"
       }, /*#__PURE__*/_react.default.createElement("path", {
         className: "track",
         fill: "none",
@@ -28651,7 +28651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63580" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51300" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
