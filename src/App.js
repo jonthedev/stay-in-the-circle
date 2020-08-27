@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
 import Circle from "./components/Circle";
-import Controller from "./components/Controller";
 import ButtonStart from "./components/ButtonStart";
 
 class App extends Component {
@@ -26,6 +25,8 @@ class App extends Component {
       },
     }));
   };
+
+  //
 
   render() {
     return (
