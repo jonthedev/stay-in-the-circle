@@ -28415,9 +28415,9 @@ var Circle = /*#__PURE__*/function (_React$Component) {
         };
       });
 
-      var inside = _this.state.circle.inside; //add to counter if user is in the circle
+      var inside = _this.state.circle.inside; //check if game has started & user is within the circle
 
-      if (!inside) {
+      if (!inside && _this.props.gameStatus) {
         _this.props.addCount();
       }
     });
@@ -28453,7 +28453,7 @@ var Circle = /*#__PURE__*/function (_React$Component) {
         onMouseLeave: function onMouseLeave() {
           return _this2.circleStatus();
         },
-        r: "1",
+        r: "0.6",
         fill: "orange"
       }));
     }
@@ -28547,10 +28547,13 @@ var App = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "setGameStatus", function () {
       _this.setState(function (prevState) {
         return {
-          gameStatus: !prevState.gameStatus,
-          count: prevState.count > 0 ? 0 : prevState.count
+          gameStatus: !prevState.gameStatus
         };
       });
+
+      if (_this.state.gameStatus && _this.state.count > 0) {
+        _this.resetCounter();
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "addCount", function () {
@@ -28558,6 +28561,12 @@ var App = /*#__PURE__*/function (_Component) {
         return {
           count: prevState.count + 1
         };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resetCounter", function () {
+      _this.setState({
+        count: 0
       });
     });
 
@@ -28570,15 +28579,6 @@ var App = /*#__PURE__*/function (_Component) {
 
 
   _createClass(App, [{
-    key: "componentDidUpdate",
-    //increase count here
-    value: function componentDidUpdate() {// if (this.gameStatus) {
-      //   this.setState(prevState => ({
-      //     count: prevState.count + 1,
-      //   }));
-      // }
-    }
-  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
@@ -28642,7 +28642,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53589" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55896" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

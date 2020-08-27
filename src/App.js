@@ -16,8 +16,11 @@ class App extends Component {
   setGameStatus = () => {
     this.setState(prevState => ({
       gameStatus: !prevState.gameStatus,
-      count: prevState.count > 0 ? 0 : prevState.count,
     }));
+
+    if (this.state.gameStatus && this.state.count > 0) {
+      this.resetCounter();
+    }
   };
 
   //INCREASE COUNTER
@@ -27,14 +30,12 @@ class App extends Component {
     }));
   };
 
-  //increase count here
-  componentDidUpdate() {
-    // if (this.gameStatus) {
-    //   this.setState(prevState => ({
-    //     count: prevState.count + 1,
-    //   }));
-    // }
-  }
+  //RESET COUNTER
+  resetCounter = () => {
+    this.setState({
+      count: 0,
+    });
+  };
 
   render() {
     return (

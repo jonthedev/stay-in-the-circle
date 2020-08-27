@@ -17,10 +17,11 @@ class Circle extends React.Component {
         inside: !prevState.circle.inside,
       },
     }));
+
     const { inside } = this.state.circle;
 
-    //add to counter if user is in the circle
-    if (!inside) {
+    //check if game has started & user is within the circle
+    if (!inside && this.props.gameStatus) {
       this.props.addCount();
     }
   };
@@ -39,7 +40,7 @@ class Circle extends React.Component {
           className={gameStatus ? "marker marker-rotate" : "marker"}
           onMouseOver={() => this.circleStatus()}
           onMouseLeave={() => this.circleStatus()}
-          r="1"
+          r="0.6"
           fill="orange"
         ></circle>
       </svg>
