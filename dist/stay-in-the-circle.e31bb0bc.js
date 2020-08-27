@@ -28369,45 +28369,100 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Circle = function Circle(_ref) {
-  var animate = _ref.animate;
-  return /*#__PURE__*/_react.default.createElement("svg", {
-    viewBox: "0,0 10,10",
-    width: "400px",
-    height: "400px"
-  }, /*#__PURE__*/_react.default.createElement("path", {
-    className: "track",
-    fill: "none",
-    strokeWidth: "0.25",
-    d: "M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
-  }), /*#__PURE__*/_react.default.createElement("circle", {
-    className: animate.class,
-    r: "1",
-    fill: "orange"
-  }));
-};
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Circle = /*#__PURE__*/function (_React$Component) {
+  _inherits(Circle, _React$Component);
+
+  var _super = _createSuper(Circle);
+
+  function Circle() {
+    var _this;
+
+    _classCallCheck(this, Circle);
+
+    _this = _super.call(this);
+
+    _defineProperty(_assertThisInitialized(_this), "circleStatus", function () {
+      //set status if user is inside the circle
+      _this.setState(function (prevState) {
+        return {
+          circle: {
+            inside: !prevState.circle.inside
+          }
+        };
+      });
+
+      var inside = _this.state.circle.inside; //add to counter if user is in the circle
+
+      if (!inside) {
+        _this.props.addCount();
+      }
+    });
+
+    _this.state = {
+      circle: {
+        inside: false
+      }
+    };
+    return _this;
+  }
+
+  _createClass(Circle, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var gameStatus = this.props.gameStatus;
+      return /*#__PURE__*/_react.default.createElement("svg", {
+        viewBox: "0,0 10,10",
+        width: "400px",
+        height: "400px"
+      }, /*#__PURE__*/_react.default.createElement("path", {
+        className: "track",
+        fill: "none",
+        strokeWidth: "0.25",
+        d: "M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
+      }), /*#__PURE__*/_react.default.createElement("circle", {
+        className: gameStatus ? "marker marker-rotate" : "marker",
+        onMouseOver: function onMouseOver() {
+          return _this2.circleStatus();
+        },
+        onMouseLeave: function onMouseLeave() {
+          return _this2.circleStatus();
+        },
+        r: "1",
+        fill: "orange"
+      }));
+    }
+  }]);
+
+  return Circle;
+}(_react.default.Component);
 
 var _default = Circle;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/components/Controller.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Controller = function Controller() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "control"
-  }, /*#__PURE__*/_react.default.createElement("button", null, "Start Game"));
-};
-
-var _default = Controller;
 exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"src/components/ButtonStart.js":[function(require,module,exports) {
 "use strict";
@@ -28444,8 +28499,6 @@ var _react = _interopRequireWildcard(require("react"));
 require("./style.css");
 
 var _Circle = _interopRequireDefault(require("./components/Circle"));
-
-var _Controller = _interopRequireDefault(require("./components/Controller"));
 
 var _ButtonStart = _interopRequireDefault(require("./components/ButtonStart"));
 
@@ -28495,32 +28548,44 @@ var App = /*#__PURE__*/function (_Component) {
       _this.setState(function (prevState) {
         return {
           gameStatus: !prevState.gameStatus,
-          animateCircle: {
-            class: prevState.gameStatus ? "marker" : "marker marker-rotate"
-          }
+          count: prevState.count > 0 ? 0 : prevState.count
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "addCount", function () {
+      _this.setState(function (prevState) {
+        return {
+          count: prevState.count + 1
         };
       });
     });
 
     _this.state = {
       gameStatus: false,
-      count: 0,
-      animateCircle: {
-        animate: false,
-        class: "marker"
-      }
+      count: 0
     };
     return _this;
   } //START / STOP GAME
 
 
   _createClass(App, [{
+    key: "componentDidUpdate",
+    //increase count here
+    value: function componentDidUpdate() {// if (this.gameStatus) {
+      //   this.setState(prevState => ({
+      //     count: prevState.count + 1,
+      //   }));
+      // }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the yellow circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, {
-        animate: this.state.animateCircle
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Stay in the circle"), /*#__PURE__*/_react.default.createElement("p", null, "* Welcome, the rules are simple, you must move your mouse pointer within the orange circle and stay there until the counter reaches 100."), /*#__PURE__*/_react.default.createElement(_Circle.default, {
+        addCount: this.addCount,
+        gameStatus: this.state.gameStatus
       }), /*#__PURE__*/_react.default.createElement("div", {
         className: "control"
       }, /*#__PURE__*/_react.default.createElement(_ButtonStart.default, {
@@ -28537,7 +28602,7 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./style.css":"src/style.css","./components/Circle":"src/components/Circle.js","./components/Controller":"src/components/Controller.js","./components/ButtonStart":"src/components/ButtonStart.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./style.css":"src/style.css","./components/Circle":"src/components/Circle.js","./components/ButtonStart":"src/components/ButtonStart.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28577,7 +28642,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62577" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53589" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

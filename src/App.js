@@ -9,10 +9,6 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
-      animateCircle: {
-        animate: false,
-        class: "marker",
-      },
     };
   }
 
@@ -20,13 +16,25 @@ class App extends Component {
   setGameStatus = () => {
     this.setState(prevState => ({
       gameStatus: !prevState.gameStatus,
-      animateCircle: {
-        class: prevState.gameStatus ? "marker" : "marker marker-rotate",
-      },
+      count: prevState.count > 0 ? 0 : prevState.count,
     }));
   };
 
-  //
+  //INCREASE COUNTER
+  addCount = () => {
+    this.setState(prevState => ({
+      count: prevState.count + 1,
+    }));
+  };
+
+  //increase count here
+  componentDidUpdate() {
+    // if (this.gameStatus) {
+    //   this.setState(prevState => ({
+    //     count: prevState.count + 1,
+    //   }));
+    // }
+  }
 
   render() {
     return (
@@ -34,9 +42,9 @@ class App extends Component {
         <h1>Stay in the circle</h1>
         <p>
           * Welcome, the rules are simple, you must move your mouse pointer
-          within the yellow circle and stay there until the counter reaches 100.
+          within the orange circle and stay there until the counter reaches 100.
         </p>
-        <Circle animate={this.state.animateCircle} />
+        <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
         <div className="control">
           <ButtonStart
             setGameStatus={this.setGameStatus}
