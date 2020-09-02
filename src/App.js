@@ -3,7 +3,6 @@ import "./style.css";
 import Circle from "./components/Circle";
 import ButtonStart from "./components/ButtonStart";
 import Message from "./components/Message";
-import MrT from "./components/MrT";
 
 class App extends Component {
   constructor() {
@@ -49,10 +48,7 @@ class App extends Component {
       <div className="container">
         <h1>{this.state.title}</h1>
         <p>{this.state.welcomeMessage}</p>
-        <div className="container">
-          <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
-          <MrT />
-        </div>
+        <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
         <div className="control">
           <ButtonStart
             setGameStatus={this.setGameStatus}

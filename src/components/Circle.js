@@ -1,51 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class Circle extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      circle: {
-        inside: false,
-      },
-    };
+const Circle = ({ addCount, gameStatus }) => {
+  const [insideCircle, setInsideCircle] = useState(false);
+
+  function toggleInside() {
+    setInsideCircle(prevStatus => !prevStatus);
   }
 
-  circleStatus = () => {
-    //set status if user is inside the circle
-    this.setState(prevState => ({
-      circle: {
-        inside: !prevState.circle.inside,
-      },
-    }));
-
-    const { inside } = this.state.circle;
-
-    //check if game has started & user is within the circle
-    if (!inside && this.props.gameStatus) {
-      this.props.addCount();
+  useEffect(() => {
+    if (insideCircle && gameStatus) {
+      addCount();
     }
-  };
+  }, [insideCircle]);
 
-  render() {
-    const gameStatus = this.props.gameStatus;
-    return (
-      <svg viewBox="0,0 10,10" width="250px" height="250px">
-        <path
-          className="track"
-          fill="none"
-          strokeWidth="0.25"
-          d="M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
-        />
-        <circle
-          className={gameStatus ? "marker marker-rotate" : "marker"}
-          onMouseOver={() => this.circleStatus()}
-          onMouseLeave={() => this.circleStatus()}
-          r="0.6"
-          fill="orange"
-        ></circle>
-      </svg>
-    );
-  }
-}
+  return (
+    <svg viewBox="0,0 10,10" width="250px" height="250px">
+      <path
+        className="track"
+        fill="none"
+        strokeWidth="0.25"
+        d="M 5 5 m -4, 0 a 4,4 0 1,0 8,0 a 4,4 0 1,0 -8,0"
+      />
+      <circle
+        className={gameStatus ? "marker marker-rotate" : "marker"}
+        onMouseOver={toggleInside}
+        onMouseLeave={toggleInside}
+        r="0.6"
+        fill="orange"
+      ></circle>
+    </svg>
+  );
+};
 
 export default Circle;
