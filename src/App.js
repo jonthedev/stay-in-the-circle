@@ -3,6 +3,7 @@ import "./style.css";
 import Circle from "./components/Circle";
 import ButtonStart from "./components/ButtonStart";
 import Message from "./components/Message";
+import Header from "./components/Header";
 
 class App extends Component {
   constructor() {
@@ -10,9 +11,6 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
-      title: "Stay In The Circle",
-      welcomeMessage:
-        "* Welcome, the rules are simple, MR-T wants you to keep your mouse pointer within the orange circle. You win when the counter reaches 50. *",
     };
   }
 
@@ -46,8 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>{this.state.title}</h1>
-        <p>{this.state.welcomeMessage}</p>
+        <Header />
         <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
         <div className="control">
           <ButtonStart
@@ -58,7 +55,7 @@ class App extends Component {
         </div>
         <div>
           {this.state.count <= 49 ? (
-            <h1>"I pity the fool who doesn't stay in the circle!"</h1>
+            <p>"I pity the fool who doesn't stay in the circle!"</p>
           ) : (
             <Message />
           )}
