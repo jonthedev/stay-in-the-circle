@@ -28432,15 +28432,20 @@ var Circle = function Circle(_ref) {
 
   (0, _react.useEffect)(function () {
     if (insideCircle && gameStatus) {
-      addCount();
+      var intervalId = setInterval(function () {
+        addCount();
+      }, 300);
+      return function () {
+        return clearInterval(intervalId);
+      };
     }
   }, [insideCircle]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("svg", {
     viewBox: "0,0 10,10",
-    width: "250px",
-    height: "250px"
+    width: "350px",
+    height: "350px"
   }, /*#__PURE__*/_react.default.createElement("path", {
     className: "track",
     fill: "none",
@@ -28480,7 +28485,9 @@ var ButtonStart = function ButtonStart(props) {
 
 var _default = ButtonStart;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/components/Message.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/sounds/winner.mp3":[function(require,module,exports) {
+module.exports = "/winner.4d1588e6.mp3";
+},{}],"src/components/Message.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28490,19 +28497,35 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _winner = _interopRequireDefault(require("../sounds/winner.mp3"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Message() {
-  return /*#__PURE__*/_react.default.createElement("p", {
+function Message(_ref) {
+  var count = _ref.count;
+  //Winning audio
+  var audio = new Audio(_winner.default);
+
+  if (count == 50) {
+    audio.play();
+  } //winning message
+
+
+  var winMessage = /*#__PURE__*/_react.default.createElement("p", {
     style: {
       fontSize: "2em"
     }
-  }, "Congratulations you won!");
+  }, "Congratulations you won!"); //start message
+
+
+  var startMessage = /*#__PURE__*/_react.default.createElement("p", null, "\"I pity the fool who doesn't stay in the circle!\"");
+
+  return /*#__PURE__*/_react.default.createElement("div", null, count <= 49 ? startMessage : winMessage);
 }
 
 var _default = Message;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../sounds/winner.mp3":"src/sounds/winner.mp3"}],"src/components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28689,7 +28712,9 @@ var App = /*#__PURE__*/function (_Component) {
         gameStatus: this.state.gameStatus
       }), /*#__PURE__*/_react.default.createElement("span", {
         className: "count"
-      }, this.state.count)), /*#__PURE__*/_react.default.createElement("div", null, this.state.count <= 49 ? /*#__PURE__*/_react.default.createElement("p", null, "\"I pity the fool who doesn't stay in the circle!\"") : /*#__PURE__*/_react.default.createElement(_Message.default, null)));
+      }, this.state.count)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Message.default, {
+        count: this.state.count
+      })));
     }
   }]);
 
@@ -28738,7 +28763,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52249" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53055" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

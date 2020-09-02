@@ -1,5 +1,5 @@
 body {
-  background: rgb(55, 67, 167);
+  background: rgb(39, 39, 42);
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@ body {
 
 .container {
   text-align: center;
-  color: #fff;
+  color: rgb(231, 222, 222);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,7 +33,7 @@ p {
 }
 
 .marker-rotate {
-  animation: move 1.6s linear infinite;
+  animation: move 3.6s linear infinite;
 }
 
 svg {
@@ -70,15 +70,15 @@ svg {
   font-size: 1em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #fff;
+  color: rgb(231, 222, 222);
 }
 
 .start {
-  background: green;
+  background: rgb(20, 116, 20);
 }
 
 .stop {
-  background: red;
+  background: rgb(192, 55, 55);
 }
 
 .count {

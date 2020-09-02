@@ -54,11 +54,7 @@ class App extends Component {
           <span className="count">{this.state.count}</span>
         </div>
         <div>
-          {this.state.count <= 49 ? (
-            <p>"I pity the fool who doesn't stay in the circle!"</p>
-          ) : (
-            <Message />
-          )}
+          <Message count={this.state.count} />
         </div>
       </div>
     );

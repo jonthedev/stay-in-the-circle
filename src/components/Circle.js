@@ -10,13 +10,16 @@ const Circle = ({ addCount, gameStatus }) => {
 
   useEffect(() => {
     if (insideCircle && gameStatus) {
-      addCount();
+      const intervalId = setInterval(() => {
+        addCount();
+      }, 300);
+      return () => clearInterval(intervalId);
     }
   }, [insideCircle]);
 
   return (
     <div className="container">
-      <svg viewBox="0,0 10,10" width="250px" height="250px">
+      <svg viewBox="0,0 10,10" width="350px" height="350px">
         <path
           className="track"
           fill="none"
