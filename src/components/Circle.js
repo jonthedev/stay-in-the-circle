@@ -19,7 +19,7 @@ const Circle = ({ addCount, gameStatus }) => {
 
   return (
     <div className="container">
-      <svg viewBox="0,0 10,10" width="350px" height="350px">
+      <svg viewBox="0,0 10,10" width="300px" height="300px">
         <path
           className="track"
           fill="none"

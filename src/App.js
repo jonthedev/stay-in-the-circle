@@ -4,6 +4,7 @@ import Circle from "./components/Circle";
 import ButtonStart from "./components/ButtonStart";
 import Message from "./components/Message";
 import Header from "./components/Header";
+import AudioIcon from "./components/AudioIcon";
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
     this.state = {
       gameStatus: false,
       count: 0,
+      winLoose: null,
     };
   }
 
@@ -44,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <AudioIcon count={this.state.count} />
         <Header />
         <Circle addCount={this.addCount} gameStatus={this.state.gameStatus} />
         <div className="control">
@@ -53,9 +56,7 @@ class App extends Component {
           />
           <span className="count">{this.state.count}</span>
         </div>
-        <div>
-          <Message count={this.state.count} />
-        </div>
+        <Message count={this.state.count} />
       </div>
     );
   }
