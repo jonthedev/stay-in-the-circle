@@ -16,7 +16,7 @@ const AudioIcon = ({ count }) => {
   //Winning audio
   const winAudio = new Audio(winner);
   useEffect(() => {
-    if (count == 10 && audio) {
+    if (count == 50 && audio) {
       winAudio.play();
     }
   }, [count]);

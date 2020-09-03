@@ -100,14 +100,6 @@ svg {
     font-size: 1.5em;
   }
 }
-@-webkit-keyframes bounce {
-  from {
-    transform: translateY(10px);
-  }
-  to {
-    transform: translateY(-10px);
-  }
-}
 
 /* SOUND ICON */
 .sound {

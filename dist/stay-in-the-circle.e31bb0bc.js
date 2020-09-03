@@ -28434,7 +28434,7 @@ var Circle = function Circle(_ref) {
     if (insideCircle && gameStatus) {
       var intervalId = setInterval(function () {
         addCount();
-      }, 300);
+      }, 200);
       return function () {
         return clearInterval(intervalId);
       };
@@ -39397,7 +39397,7 @@ var AudioIcon = function AudioIcon(_ref) {
 
   var winAudio = new Audio(_winner.default);
   (0, _react.useEffect)(function () {
-    if (count == 10 && audio) {
+    if (count == 50 && audio) {
       winAudio.play();
     }
   }, [count]);
@@ -39590,7 +39590,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55491" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59155" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -12,7 +12,7 @@ const Circle = ({ addCount, gameStatus }) => {
     if (insideCircle && gameStatus) {
       const intervalId = setInterval(() => {
         addCount();
-      }, 300);
+      }, 200);
       return () => clearInterval(intervalId);
     }
   }, [insideCircle]);
