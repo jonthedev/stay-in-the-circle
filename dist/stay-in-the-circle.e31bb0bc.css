@@ -85,21 +85,27 @@ svg {
   margin-left: 0.5em;
   font-size: 3em;
 }
+/* WIN ANIMATION CONGRATULATIONS */
+.bounce {
+  animation: bounce 1.3s alternate infinite;
+}
 
 @keyframes bounce {
   from {
-    transform: translateY(0px);
+    transform: translateY(10px);
+    font-size: initial;
   }
   to {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
+    font-size: 1.5em;
   }
 }
 @-webkit-keyframes bounce {
   from {
-    transform: translateY(0px);
+    transform: translateY(10px);
   }
   to {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
 }
 

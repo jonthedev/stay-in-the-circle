@@ -3,9 +3,7 @@ import winner from "../sounds/winner.mp3";
 
 function Message({ count }) {
   //winning message
-  const winMessage = (
-    <p style={{ fontSize: "2em" }}>Congratulations you won!</p>
-  );
+  const winMessage = <p className="bounce">Congratulations you won!</p>;
 
   //start message
   const startMessage = <p>"I pity the fool who doesn't stay in the circle!"</p>;

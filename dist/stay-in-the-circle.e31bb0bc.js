@@ -28506,9 +28506,7 @@ function Message(_ref) {
 
   //winning message
   var winMessage = /*#__PURE__*/_react.default.createElement("p", {
-    style: {
-      fontSize: "2em"
-    }
+    className: "bounce"
   }, "Congratulations you won!"); //start message
 
 
@@ -39394,13 +39392,12 @@ var AudioIcon = function AudioIcon(_ref) {
       return !audioState;
     });
   } //watch for when the game is won
+  //Winning audio
 
 
+  var winAudio = new Audio(_winner.default);
   (0, _react.useEffect)(function () {
-    //Winning audio
-    var winAudio = new Audio(_winner.default);
-
-    if (count == 50 && audio) {
+    if (count == 10 && audio) {
       winAudio.play();
     }
   }, [count]);
@@ -39593,7 +39590,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53995" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55491" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
